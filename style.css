@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-color: #505050;
+    color: antiquewhite;
+}
+@media only screen and (min-width: 300px) {
+    body {
+        width: 100%;
+        margin: 0;
+    }
+}
+.container {
+    height: auto;
+    background-color: #1c1c1c;
+    min-width: 300px;
+    max-width: 330px;
+    margin-top: 2%;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    border-radius: 10px;
+    box-shadow: 0px 0px 23px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 23px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 23px 1px rgba(0, 0, 0, 0.75);
+}
+.displayNumber {
+    color: antiquewhite;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    font-size: 3.5rem;
+    width: 100%;
+    text-align: end;
+    padding-right: 2rem;
+}
+
+.buttons {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    border: 0;
+    margin: 3px 2px;
+    text-align: center;
+    align-items: center;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 50%;
+}
+.numbers {
+    color: antiquewhite;
+    background-color: #505050;
+}
+.zeroButton {
+    height: 2.5em;
+    width: 5.5em;
+    padding-left: 10px;
+    border-radius: 2em;
+    text-align: start;
+}
+
+.featuredButton {
+    background-color: #d4d4d2;
+    color: #000;
+}
+.operatorsButton {
+    background-color: #ff9500;
+    color: antiquewhite;
+}
+.buttons:hover {
+    transform: scale(1.05);
+    transition: ease 0.2s;
+}
+.buttons:active {
+    transform: translateY(5px);
+    transition: ease 0.2s;
+}
