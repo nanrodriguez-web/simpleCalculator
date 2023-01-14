@@ -34,13 +34,16 @@ body {
     -moz-box-shadow: 0px 0px 23px 1px rgba(0, 0, 0, 0.75);
 }
 .displayNumber {
-    color: antiquewhite;
+    color: rgb(255, 255, 255);
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     font-size: 3.5rem;
     width: 100%;
     text-align: end;
     padding-right: 2rem;
+}
+.displayNumber:hover {
+    cursor: pointer;
 }
 
 .buttons {
@@ -55,7 +58,7 @@ body {
     border-radius: 50%;
 }
 .numbers {
-    color: antiquewhite;
+    color: rgb(255, 250, 244);
     background-color: #505050;
 }
 .zeroButton {
@@ -72,7 +75,7 @@ body {
 }
 .operatorsButton {
     background-color: #ff9500;
-    color: antiquewhite;
+    color: rgb(255, 250, 244);
 }
 .buttons:hover {
     transform: scale(1.05);
