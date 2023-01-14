@@ -13,10 +13,18 @@
             <h1 id="displayNumbers" class="displayNumber">0</h1>
             <div class="commands">
                 <button id="buttonAC" class="buttons featuredButton">C</button>
-                <button id="buttonPlusMinus" class="buttons featuredButton">
+                <button
+                    id="buttonPlusMinus"
+                    value="-"
+                    class="modifier buttons featuredButton"
+                >
                     +/-
                 </button>
-                <button id="buttonPercent" class="buttons featuredButton">
+                <button
+                    id="buttonPercent"
+                    value="%"
+                    class="modifier buttons featuredButton"
+                >
                     %
                 </button>
                 <button
@@ -37,7 +45,7 @@
                 </button>
                 <button
                     id="buttonMultiply"
-                    value="*"
+                    value="x"
                     class="buttons operators operatorsButton"
                 >
                     x
@@ -81,7 +89,9 @@
                 >
                     0
                 </button>
-                <button id="buttonDecimal" class="buttons numbers">.</button>
+                <button id="buttonDecimal" value="." class="modifier buttons">
+                    .
+                </button>
                 <button
                     id="buttonEqual"
                     value="="

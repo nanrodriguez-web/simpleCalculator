@@ -61,6 +61,10 @@ body {
     color: rgb(255, 250, 244);
     background-color: #505050;
 }
+#buttonDecimal {
+    color: rgb(255, 250, 244);
+    background-color: #505050;
+}
 .zeroButton {
     height: 2.5em;
     width: 5.5em;
