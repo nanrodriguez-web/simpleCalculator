@@ -1,10 +1,12 @@
 // Store number
 
 let initialNumberStore = [],
+    joinedNumbers = [],
     firstNumberStore = [0],
     finalNumberStore = [0],
     operatorStore = [],
     resultNumberStore = [0];
+joinedNumbers.length = 1;
 
 document.querySelectorAll(".modifier").forEach(function (modifier) {
     modifier.addEventListener("click", function () {
@@ -19,9 +21,12 @@ document.querySelectorAll(".modifier").forEach(function (modifier) {
 document.querySelectorAll(".numbers").forEach(function (number) {
     number.addEventListener("click", function () {
         let storeHere = number.value;
-        initialNumberStore.push(parseInt(storeHere));
+        initialNumberStore.push(storeHere);
+
         let collectedNumber = initialNumberStore.join("");
         document.getElementById("displayNumbers").innerHTML = collectedNumber;
+
+        joinedNumbers.push(parseFloat(collectedNumber));
 
         if (collectedNumber <= 0) {
             initialNumberStore.slice(0, collectedNumber.length);
@@ -34,6 +39,8 @@ document.querySelectorAll(".numbers").forEach(function (number) {
         console.log(resultNumberStore);
         console.log("This is initialNumberStore");
         console.log(initialNumberStore);
+        console.log("This is joinedNumbers");
+        console.log(joinedNumbers);
         console.log("-----------------");
 
         let myH1 = document.getElementById("displayNumbers");
@@ -55,19 +62,25 @@ clearButton.addEventListener("click", function () {
     finalNumberStore.length = 0;
     finalNumberStore.push(0);
     resultNumberStore.length = 0;
-    resultNumberStore.push();
+    resultNumberStore.push(0);
     operatorStore.length = 0;
+    joinedNumbers.length = 0;
     document.getElementById("displayNumbers").innerHTML = 0;
 });
 
 document.querySelectorAll(".operators").forEach(function (operators) {
     operators.addEventListener("click", function () {
-        let firstNumber = initialNumberStore.join("");
-        firstNumberStore.push(parseInt(firstNumber));
+        // finalNumberStore.splice(0, 1);
+        //
+        if (initialNumberStore.length < 0) {
+            initialNumberStore.push(parseFloat(joinedNumbers.join("")));
+        }
+        let firstNumber = parseFloat(joinedNumbers[joinedNumbers.length - 1]);
+        // firstNumberStore.push(parseFloat(firstNumber));
         operatorStore.push(operators.value);
-        firstNumberStore.splice(0, 1);
+        // firstNumberStore.splice(0, 1);
 
-        let a = parseFloat(firstNumberStore[0]),
+        let a = firstNumber,
             b = parseFloat(finalNumberStore[finalNumberStore.length - 1]),
             result;
 
@@ -87,6 +100,9 @@ document.querySelectorAll(".operators").forEach(function (operators) {
 
         initialNumberStore.length = 0;
         finalNumberStore.push(resultNumberStore[resultNumberStore.length - 1]);
+        // finalNumberStore.splice(0, 1);
+        resultNumberStore.splice(0, 1);
+        joinedNumbers.splice(0, 1);
 
         console.log("This is finalNumberStore");
         console.log(finalNumberStore);
@@ -96,6 +112,8 @@ document.querySelectorAll(".operators").forEach(function (operators) {
         console.log(resultNumberStore);
         console.log("This is initialNumberStore");
         console.log(initialNumberStore);
+        console.log("This is joinedNumbers");
+        console.log(joinedNumbers);
         console.log("This is currentoperator");
         console.log(operators.value);
         console.log("-------------------");
@@ -105,8 +123,10 @@ document.querySelectorAll(".operators").forEach(function (operators) {
 let computeResult = document.getElementById("buttonEqual");
 computeResult.addEventListener("click", function () {
     if (operatorStore.length > 0) {
-        let a = parseFloat(finalNumberStore[finalNumberStore.length - 1]),
-            b = parseFloat(initialNumberStore[initialNumberStore.length - 1]),
+        let firstNumber = parseFloat(joinedNumbers[joinedNumbers.length - 1]);
+
+        let b = firstNumber,
+            a = parseFloat(finalNumberStore[finalNumberStore.length - 1]),
             result;
 
         let operators = operatorStore[operatorStore.length - 1];
@@ -124,23 +144,25 @@ computeResult.addEventListener("click", function () {
             resultNumberStore.push(parseFloat(result));
         }
 
-        let collectedNumberStore = parseInt(initialNumberStore.join(""));
-        finalNumberStore.push(collectedNumberStore);
-        if (initialNumberStore.length > 0) {
-            initialNumberStore.length = 0;
-            initialNumberStore.push(0);
-        }
-        let presentResult = parseFloat(
-            resultNumberStore[resultNumberStore.length - 1]
+        // initialNumberStore.push(
+        //     resultNumberStore[resultNumberStore.length - 1]
+        // );
+        // initialNumberStore.splice(0, 1);
+
+        // finalNumberStore.push(resultNumberStore[resultNumberStore.length - 1]);
+
+        joinedNumbers.push(resultNumberStore[resultNumberStore.length - 1]);
+
+        document.getElementById("displayNumbers").innerHTML =
+            "=" + resultNumberStore[resultNumberStore.length - 1];
+
+        finalNumberStore.push(
+            parseFloat(joinedNumbers[joinedNumbers.length - 1])
         );
+        initialNumberStore.slice(-1);
+        resultNumberStore.length = 1;
+        finalNumberStore.length = 1;
 
-        finalNumberStore.push(resultNumberStore[resultNumberStore.length - 1]);
-
-        document.getElementById(
-            "displayNumbers"
-        ).innerHTML = `= ${presentResult}`;
-
-        console.log("this is when pressed equal");
         console.log("This is finalNumberStore");
         console.log(finalNumberStore);
         console.log("This is firstNumberStore");
@@ -149,6 +171,10 @@ computeResult.addEventListener("click", function () {
         console.log(resultNumberStore);
         console.log("This is initialNumberStore");
         console.log(initialNumberStore);
+        console.log("This is joinedNumbers");
+        console.log(joinedNumbers);
+        console.log("This is currentoperator");
+        console.log(operators.value);
         console.log("-------------------");
     }
 });
