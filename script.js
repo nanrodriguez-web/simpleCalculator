@@ -66,19 +66,18 @@ clearButton.addEventListener("click", function () {
     operatorStore.length = 0;
     joinedNumbers.length = 0;
     document.getElementById("displayNumbers").innerHTML = 0;
+    console.clear();
 });
 
 document.querySelectorAll(".operators").forEach(function (operators) {
     operators.addEventListener("click", function () {
-        // finalNumberStore.splice(0, 1);
-        //
         if (initialNumberStore.length < 0) {
             initialNumberStore.push(parseFloat(joinedNumbers.join("")));
         }
         let firstNumber = parseFloat(joinedNumbers[joinedNumbers.length - 1]);
-        // firstNumberStore.push(parseFloat(firstNumber));
+
+        finalNumberStore.push(parseFloat(firstNumber));
         operatorStore.push(operators.value);
-        // firstNumberStore.splice(0, 1);
 
         let a = firstNumber,
             b = parseFloat(finalNumberStore[finalNumberStore.length - 1]),
